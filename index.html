@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran&family=Inter&family=Kalam:wght@400;700&family=Niramit:wght@600&family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+ 
+    <script src="https://use.fontawesome.com/cd2de690d5.js"></script>
+  </head>
+  <body>
+    
+    <div class="container" >
+      <div class="wrap">
+        <ul class="breacrumb">
+         <li><a href="#" class="tab " id="tab-1">1.選地區與喜好</a></li>
+         <li><a href="#" class="tab" id="tab-2">2.挑景點</a></li>
+         <li><a href="#" class="tab" id="tab-3">3.景點確認</a></li>
+         <li><a href="#" class="tab active" id="tab-4">4.做決定</a></li>
+          
+        </ul>
+     </div>
+
+        <!-- 選地區與喜好 -->
+        <div class="tabs tab-1 hidden">
+          
+          <div class="main">
+            <div class="txt">   
+              <h2>選地區</h2>
+             </div>
+            <div class="selectblock">
+           
+              <div role="tw-city-selector" class="my-style-selector"></div>
+            </div>
+         
+            <div class="txt">   
+              <h2>選喜好</h2>
+
+             </div>
+             <div class="item">
+              <div class="pic">
+                <img src="https://www.travel.taipei/content/images/attractions/215808/1024x768_attractions-image-vy3dcxj_musaxyka6y-h6w.jpg" alt="">
+                <div class="pic_txt">
+                  <h2>養生溫泉</h2>
+                </div>
+                <div class="pic_check">
+                  <input type="checkbox" class="check"  value="Bike">
+                </div>
+               </div>
+               <div class="pic">
+                <img src="https://www.travel.taipei/content/images/attractions/96282/1024x768_attractions-image-pxaod02z1eyctz8fbw1a3w.jpg" alt="">
+                <div class="pic_txt">
+                  <h2>單車遊蹤</h2>
+                </div>
+                <div class="pic_check">
+                  <input type="checkbox" class="check"  value="Bike">
+                </div>
+               </div>
+               <div class="pic">
+                <img src="https://www.travel.taipei/content/images/attractions/215849/1024x768_attractions-image-eznrzk2yckwybfrr_qggdw.jpg" alt="">
+                <div class="pic_txt">
+                  <h2>歷史建築</h2>
+                </div>
+                <div class="pic_check">
+                  <input type="checkbox" class="check"  value="Bike">
+                </div>
+               </div>
+               <div class="pic">
+                <img src="https://www.travel.taipei/content/images/attractions/211655/1024x768_attractions-image-tvon6wqme0cnyqsjmi3lnq.jpg" alt="">
+                <div class="pic_txt">
+                  <h2>戶外踏青</h2>
+                </div>
+                <div class="pic_check">
+                  <input type="checkbox" class="check"  value="Bike">
+                </div>
+               </div>
+               <div class="pic">
+                <img src="https://www.travel.taipei/content/images/attractions/184759/1024x768_attractions-image-i8-cjhpou0yirz6-bfekhq.jpg" alt="">
+                <div class="pic_txt">
+                  <h2>主題商街</h2>
+                </div>
+                <div class="pic_check">
+                  <input type="checkbox" class="check"  value="Bike">
+                </div>
+               </div>
+               <div class="pic">
+                <img src="https://www.travel.taipei/content/images/attractions/89274/1024x768_attractions-image-pwsfj1tsj0atrzi7ac0rja.jpg" alt="">
+                <div class="pic_txt">
+                  <h2>親子共遊</h2>
+                </div>
+                <div class="pic_check">
+                  <input type="checkbox" class="check"  value="Bike">
+                </div>
+               </div>
+             </div>
+        
+           
+            
+         
+          </div>
+          <div class="next">
+            <input type="button" value="挑景點" class="nextstyle">
+         </div>
+        </div>
+       <!-- 挑景點 -->
+       <div class="tabs tab-2 hidden">
+             
+        <div class="main">
+          <div class="txt">   
+            <h2>親子共學,歷史建築</h2>
+           </div>
+          
+           <a class="item" href="javascript:;">
+            
+              <div class="item_pic"><img src="https://www.travel.taipei/content/images/attractions/63538/1024x768_attractions-image-fmxcgx5usu67uir1ltrijw.jpg" alt=""></div>
+            <button class="item_tick"  >加入景點&nbsp<i class="fa fa-plus-circle" aria-hidden="true"></i></button> 
+              <div class="item_txt">
+               <h2>國立國父紀念館</h2>於1972年落成的國父紀念館，為紀念國父孫中山先生之革命行誼、人格，並發揚其思想學說，由建築師王大閎設計。除供海內外人士瞻仰國父之外，也兼具文化藝術教育、生活休閒及學術研究之功能。
+               <h4>星期五：09:00 - 18:00</h4>
+               <p>
+               </p> 
+               
+             </div>
+         
+              
+           </a>
+           <a class="item" href="javascript:;">
+          
+            <div class="item_pic"><img src="https://www.travel.taipei/content/images/attractions/207926/480x360_attractions-image-7r12wtgxlk6t0rqtaxcvvg.jpg" alt=""></div>
+            <button class="item_tick"  >加入景點&nbsp<i class="fa fa-plus-circle" aria-hidden="true"></i></button> 
+            <div class="item_txt">
+             <h2>瓶蓋工廠台北製造所</h2>
+             <h4>星期五：10:00 - 18:00</h4>
+             <p>瓶蓋工廠台北製造所是涵蓋職人手創、知識教育分享、展演及餐飲的複合式空間；在這裡不僅可以體驗各種手作課程，還可以逛市集、看展覽、欣賞音樂演出。
+
+             </p> 
+             
+           </div>
+        </a>
+        <a class="item" href="javascript:;">
+          <div class="item_pic"><img src="https://www.travel.taipei/content/images/attractions/220346/1024x768_attractions-image-1-ftnqnguu2fnblgjy5ola.jpg" alt=""></div>
+          <button class="item_tick"  >加入景點&nbsp<i class="fa fa-plus-circle" aria-hidden="true"></i></button> 
+          <div class="item_txt">
+           <h2>松山文創園區</h2>
+           <h4>園區內-室內區域：9:00~18:00
+            園區內-戶外區域：8:00~22:00
+            園區生態景觀池周邊範圍：24小時開放</h4>
+           <p>松山創意園區，位於臺北市信義區，占地6.6公頃，建於西元1937年，其前身為「臺灣總督府專賣局松山菸草工場」，為臺灣現代化工業廠房的先驅，也是第一座專業的捲菸廠。
+
+            建築風格屬「日本初現代主義」 
+           </p> 
+           
+         </div>
+      </a>
+      <a class="item" href="javascript:;">
+        <div class="item_pic"><img src="https://www.travel.taipei/content/images/attractions/91873/1024x768_attractions-image-4gk7qpcomkutwo7a9ooxea.jpg" alt=""></div>
+        <button class="item_tick"  >加入景點&nbsp<i class="fa fa-plus-circle" aria-hidden="true"></i></button> 
+        <div class="item_txt">
+         <h2>文昌宮</h2>
+         <h4>07:00 - 20:00</h4>
+         <p>文昌宮文昌帝君神像，緣於日據時代中國大陸有一商人渡海來台經商，隨身伴駕而至，該商人在客居朝夕禮拜，往後因經商失敗、無心敬神禮佛，乃將神像暫置於一叢林中，一日黃昏，無意中被一婦人發現，不識為何方神祇，回去後邀集多位熱心人士迎回，其中有一老翁，認為係司人間祿籍的文昌帝君
+         </p> 
+         
+       </div>
+    </a>
+           <div class="next">
+              <input type="button" value="景點確認" class="nextstyle">
+           </div>
+        </div>
+        </div>
+     <!-- 景點確認 -->
+     <div class="tabs tab-3 hidden">
+      <div class="main">
+        <div class="txt">   
+          <h2>景點確認</h2>
+         </div>
+         <div class="content">
+          <div class="item active">
+            <div class="item_pic">
+              <img src="https://www.travel.taipei/content/images/attractions/63538/1024x768_attractions-image-fmxcgx5usu67uir1ltrijw.jpg" alt="">
+              <div class="item_txt"><span>國立國父紀念館</span></div>
+          </div>
+           
+         </div>
+         <div class="item">
+          <div class="item_pic">
+            <img src="https://www.travel.taipei/content/images/attractions/207926/480x360_attractions-image-7r12wtgxlk6t0rqtaxcvvg.jpg" alt="">
+            <div class="item_txt"><span>瓶蓋工廠台北製造所</span></div>
+        </div>
+         
+       </div>
+       <div class="item">
+        <div class="item_pic">
+          <img src="https://www.travel.taipei/content/images/attractions/220346/1024x768_attractions-image-1-ftnqnguu2fnblgjy5ola.jpg" alt="">
+          <div class="item_txt"><span>松山文創園區</span></div>
+      </div>
+       
+     </div>
+     <div class="item">
+      <div class="item_pic">
+        <img src="https://www.travel.taipei/content/images/attractions/91873/1024x768_attractions-image-4gk7qpcomkutwo7a9ooxea.jpg" alt="">
+        <div class="item_txt"><span>文昌宮</span></div>
+    </div>
+     
+   </div>
+
+
+         </div>
+      
+         <div class="content_review">
+         
+            <div class="content_img">
+              <img src="https://www.travel.taipei/content/images/attractions/63538/1024x768_attractions-image-fmxcgx5usu67uir1ltrijw.jpg" alt="">
+            </div>
+            <div class="txt">
+              <h2>國立國父紀念館</h2>
+              <h4>星期五：09:00 - 18:00 <input type="button" value="新增至表格" class="add"></h4>
+              <p>於1972年落成的國父紀念館，為紀念國父孫中山先生之革命行誼、人格，並發揚其思想學說，由建築師王大閎設計。除供海內外人士瞻仰國父之外，也兼具文化藝術教育、生活休閒及學術研究之功能。</p>
+            </div>
+         </div>
+        <div class="check_table">
+          <table>
+            <caption>國立國父紀念館</caption>
+            <thead>
+              <tr>
+              <th></th>
+              <th>內容</th>
+              <th>衡量值</th>
+              <th>制定衡量值</th>
+              <th>刪除</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr><th>享受程度</th><td><input type="text" value="好"></td><td><input type="text" value="佳"></td><td><input type="button" class="definebtn"  value="制定衡量值"></td><td><input type="button" class="del"  value="刪除"></td></tr>
+              <tr><th>交通時間</th><td><input type="text" value="30分鐘"></td><td><input type="text" value="好"></td><td><input type="button" class="definebtn"  value="制定衡量值"></td></td><td><input type="button" class="del"  value="刪除"></td></tr>
+              <tr><th>服務設施</th><td><input type="text" value="公廁"></td><td><input type="text" value="C"></td><td><input type="button" class="definebtn"  value="制定衡量值"></td></td><td><input type="button" class="del"  value="刪除"></td></tr>
+              <tr><th>遊玩時間</th><td><input type="text" value="40分鐘"></td><td><input type="text" value="40分鐘"></td><td><input type="button"  class="definebtn" value="制定衡量值"></td></td><td><input type="button" class="del"  value="刪除"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="next">
+        <input type="button" value="做決定" class="nextstyle">
+     </div>
+     </div>
+<!-- //打分數 -->
+      <div class="tabs tab-4">
+        <div class="modal hidden ">
+          <button class="close-modal">&times;</button>
+          <h1>打分數</h1>
+          <table class="modalTable">
+            <thead>
+            
+                <tr><th></th><th>天氣資訊</th>
+                <th>交通時間</th>
+                <th>服務設施</th>
+                <th>遊玩時間</th></tr>
+            </thead>
+            <tbody>
+           
+              <tr>  <th>國立國父紀念館</th><td>
+                <div>
+                 <div class="txt">
+                  <!-- <label for="">晴朗</label>, -->
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div>
+                </div>
+              
+              </td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td></tr>
+                  
+              <tr>  <th>瓶蓋工廠台北製造所</th><td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td></tr>
+                  
+              <tr>  <th>松山文創園區</th><td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td></tr>
+              
+                <tr>  <th>文昌宮</th><td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                  <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                  <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td>
+                  <td>       <div>
+                 <div class="txt">
+                  <label for="">分數</label>
+                 </div>
+                  <div class="input">
+                  <input type="text" name="" id="">
+                  </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="overlay hidden"></div>
+        
+        <div class="main">
+          <div class="d3Chart" id="chart"></div>
+          <table class="main-table">
+            <!-- <thead>
+              <th></th>
+              <th>拿多少錢願意去?</th>
+              <th>享受程度</th>
+              <th>交通時間</th>
+              <th>服務設施</th>
+              <th>遊玩時間</th>
+            </thead>
+            <tbody>
+              <tr class="r1">
+                
+                <th class="place">國立國父紀念館</th>
+                <td>0</td>
+                <td>
+                  <div class="desc">
+                    <span>好</span>
+                  </div>
+                  <div class="txt">
+                    <span>佳</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>好</span>
+                  </div>
+                  <div class="txt">
+                    <span>30分鐘</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>C</span>
+                  </div>
+                  <div class="txt">
+                    <span>公廁</span>
+                  </div>
+                </td>
+                <td>
+                
+                  <div class="desc">
+                    <span> 40分鐘 </span>
+                  </div>
+                  <div class="txt">
+                    <span>40分鐘</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="place">瓶蓋工廠台北製造所</th>
+                <td>0</td>
+                <td>
+                  <div class="desc">
+                    <span>好</span>
+                  </div>
+                  <div class="txt">
+                    <span>佳</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>差</span>
+                  </div>
+                  <div class="txt">
+                    <span>45分鐘</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>A</span>
+                  </div>
+                  <div class="txt">
+                    <span>公廁 | 購物</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>30分鐘</span>
+                  </div>
+                  <div class="txt">
+                    <span>30分鐘</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="place">松山文創園區</th>
+                <td>0</td>
+                <td>
+                  <div class="desc">
+                    <span>好</span>
+                  </div>
+                  <div class="txt">
+                    <span>佳</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>好</span>
+                  </div>
+                  <div class="txt">
+                    <span>20分鐘</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>好</span>
+                  </div>
+                  <div class="txt">
+                    <span>晴朗</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>50分鐘</span>
+                  </div>
+                  <div class="txt">
+                    <span>50分鐘</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="place">文昌宮</th>
+                <td>0</td>
+                <td>
+                  <div class="desc">
+                    <span>差</span>
+                  </div>
+                  <div class="txt">
+                    <span>佳</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>C</span>
+                  </div>
+                  <div class="txt">
+                    <span>公廁</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>好</span>
+                  </div>
+                  <div class="txt">
+                    <span>停車場</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="desc">
+                    <span>30分鐘</span>
+                  </div>
+                  <div class="txt">
+                    <span>30分鐘</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody> -->
+          </table>
+          <div class="main-des-area">
+            <div class="main_table__desc">
+  
+            </div>
+            <nav>
+              <div class="main-des-area__btn ">
+                <a href="#" class=" show-modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                <div class="main-des-area__btn__txt">
+                  <span>打分數</span>
+                </div>
+              </div>
+            
+              
+            </nav>
+          </div>
+        </div>
+       
+     
+        <div class="row">
+         <div class="labels">
+          <div class="lagend" style="padding-top: 10px;margin-top: 30px;">
+            
+            <ul>
+               
+              <li><div class="lagend__title">國立國父紀念館</div><div class="colors" style="background: #1f77b4"> </div></li>
+              <li><div class="lagend__title">瓶蓋工廠台北製造所</div>
+                <div  class="colors" style="background: #ff7f0e"> </style=>
+              </li>
+              <li><div class="lagend__title">松山文創園區</div><div  class="colors" style="background:#2ca02c"> </div></li>
+              <li><div class="lagend__title">文昌宮</div>
+                <div  class="colors" style="background:  #d62728"
+                  > 
+              </li>
+            </ul>
+          </div>
+         </div>
+    
+       
+         
+          <div class="subchart" >
+          
+          <div class="row" id="carView">
+            
+            
+          
+          </div>
+           
+          </div>
+        </div>
+      </div>
+      </div>
+      
+   
+     
+    
+  </body>
+ 
+  <script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
+  <script src="  https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-city-selector@2.1.1/dist/tw-city-selector.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="main.js"></script>
+  <script src="./RadarChart.js"></script>
+  <script src="navgate.js"></script>
+  <script src="table.js"></script>
+  <script src="DragRader.js"></script>
+  <script src="Cardview.js"></script>
+  <script src="Radarbar.js"></script>
+  <!-- <script src='https://cdn.jsdelivr.net/lodash/4.17.2/lodash.min.js'></script> -->
+</html>

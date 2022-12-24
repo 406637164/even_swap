@@ -1,0 +1,95 @@
+[
+  [
+    {
+      "case": "國立國父紀念館",
+      "area": "拿多少錢願意去",
+      "value": 0,
+      "orgdata": ""
+    },
+    {
+      "case": "國立國父紀念館",
+      "area": "享受程度",
+      "value": 40,
+      "orgdata": 30
+    },
+    {
+      "case": "國立國父紀念館",
+      "area": "交通時間 ",
+      "value": 40,
+      "orgdata": "30分鐘"
+    },
+    {
+      "case": "國立國父紀念館",
+      "area": "服務設施 ",
+      "value": 90,
+      "orgdata": "廁所"
+    },
+    {
+      "case": "國立國父紀念館",
+      "area": "美食 ",
+      "value": 60,
+      "orgdata": "餐廳"
+    }
+  ],
+  [
+    {
+      "case": "瓶蓋工廠台北製造所 ",
+      "area": "拿多少錢願意去",
+      "value": 0,
+      "orgdata": ""
+    },
+    {
+      "case": "瓶蓋工廠台北製造所 ",
+      "area": "享受程度",
+      "value": 10,
+      "orgdata": 50
+    },
+    {
+      "case": "瓶蓋工廠台北製造所 ",
+      "area": "交通時間 ",
+      "value": 15,
+      "orgdata": "40分鐘"
+    },
+    {
+      "case": "瓶蓋工廠台北製造所 ",
+      "area": "服務設施 ",
+      "value": 20,
+      "orgdata": "廁所"
+    },
+    {
+      "case": "瓶蓋工廠台北製造所 ",
+      "area": "美食 ",
+      "value": 30,
+      "orgdata": "餐廳"
+    }
+  ],
+  [
+    {
+      "case": "松山文創園區 ",
+      "area": "拿多少錢願意去",
+      "value": 0,
+      "orgdata": ""
+    },
+    { "case": "松山文創園區 ", "area": "享受程度", "value": 70, "orgdata": 90 },
+    {
+      "case": "松山文創園區 ",
+      "area": "交通時間 ",
+      "value": 20,
+      "orgdata": "40分鐘"
+    },
+    {
+      "case": "松山文創園區 ",
+      "area": "服務設施 ",
+      "value": 30,
+      "orgdata": "廁所"
+    },
+    { "case": "松山文創園區 ", "area": "美食 ", "value": 40, "orgdata": "餐廳" }
+  ],
+  [
+    { "case": "文昌宮", "area": "拿多少錢願意去", "value": 0, "orgdata": "" },
+    { "case": "文昌宮", "area": "享受程度", "value": 90, "orgdata": 80 },
+    { "case": "文昌宮", "area": "交通時間 ", "value": 70, "orgdata": "10分鐘" },
+    { "case": "文昌宮", "area": "服務設施 ", "value": 60, "orgdata": "廁所" },
+    { "case": "文昌宮", "area": "美食 ", "value": 30, "orgdata": "餐廳" }
+  ]
+]
