@@ -1,5 +1,7 @@
 var RadarBar = {
   draw: function (datvalue2, id, cfg, y, x, d, total) {
+    var y = d3.scale.linear().domain([0, 100]).range([0, 200]);
+    console.log(datvalue2);
     let B = datvalue2.slice(); // clone
 
     B.sort((a, b) => {
@@ -21,7 +23,7 @@ var RadarBar = {
     console.log(maxars);
     d3.select(id)
       .append("g")
-
+      .attr("transform", "translate(0,60)")
       .selectAll("rect")
       .data(B)
       .enter()
@@ -29,10 +31,12 @@ var RadarBar = {
 
       .attr("fill", (d, i) => {
         console.log(d);
-        return cfg.color(d.data.idx);
+        // return cfg.color(d.data.idx);
+        return cfg.colors[d.data.cor];
       })
       .style("stroke", (d, i) => {
-        return cfg.color(d.data.idx);
+        // return cfg.color(d.data.idx);
+        return cfg.colors[d.data.cor];
       })
       .style("stroke-width", "1px")
       .attr("width", 8)
@@ -54,7 +58,7 @@ var RadarBar = {
         } else {
           percent = d.data.value;
         }
-        return height - y(percent);
+        return 100 - y(percent);
       })
 
       .attr("height", function (d, i) {
@@ -77,31 +81,17 @@ var RadarBar = {
       });
     d3.select("#main_rader")
       .selectAll("rect")
-      .transition()
-      .duration(1500)
+
+      // .transition()
+      // .duration(1500)
       .sort(function (a, b) {
         return d3.descending(a.value, b.value);
       })
       .attr("transform", "translate(0,42)");
 
-    // .attr("x", function (d, i) {
-    //   console.log(d);
-    //   //对排序之后的横坐标重排
-    //   return d.xy[0] + i * i * (i / 1.3);
-    // })
-    // .attr("y", function (d) {
-    //   var percent = 0;
-    //   if (d.data.value != 0) {
-    //     percent = (d.data.value / maxValue) * 100;
-    //   } else {
-    //     percent = d.data.value;
-    //   }
-    //   return height - y(percent);
-    // });
-
     d3.select(id)
       .append("g")
-
+      .attr("transform", "translate(0,-40)")
       .selectAll("text")
       .data(B)
       .enter()
@@ -129,11 +119,11 @@ var RadarBar = {
       .sort(function (a, b) {
         return d3.descending(a.value, b.value);
       })
-      .transition()
-      .duration(1000)
-      .attr("transform", "translate(0,37)")
+      // .transition()
+      // .duration(1000)
+      .attr("transform", "translate(0,-10)")
       .attr("x", function (d, i) {
-        return d.xy[0] + i * i * i + 3;
+        return d.xy[0] + i * i * i + 1;
       })
       .attr("y", function (d) {
         var percent = 0;
@@ -143,10 +133,6 @@ var RadarBar = {
           percent = d.data.value;
         }
 
-        // console.log(d.data.value);
-        // console.log(d.data.value);
-        // console.log(maxValue);
-        // console.log((d.data.value / maxValue) * 100);
         return height - y(percent);
       })
       .text(function (d) {

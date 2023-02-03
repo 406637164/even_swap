@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    #sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #sidebar li a {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    #toggleButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #main {
+      margin-left: 200px;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <button id="toggleButton">&lt;</button>
+      <ul>
+        <li><a href="#" onclick="displayHome()">Home</a></li>
+        <li><a href="#" onclick="displayAbout()">About</a></li>
+        <li><a href="#" onclick="displayServices()">Services</a></li>
+        <li><a href="#" onclick="displayContact()">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Main content -->
+    <div id="main">
+      <div id="home">
+        <h1>Home</h1>
+        <p>Welcome to the home page.</p>
+      </div>
+      <div id="about" style="display: none">
+        <h1>About</h1>
+        <p>Learn about our company and mission.</p>
+      </div>
+      <div id="services" style="display: none">
+        <h1>Services</h1>
+        <p>Explore the services we offer.</p>
+      </div>
+      <div id="contact" style="display: none">
+        <h1>Contact</h1>
+        <p>Get in touch with us.</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    function displayHome() {
+      document.getElementById("home").style.display = "block";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("services").style.display = "none";
+      document.getElementById("contact").style.display = "none";
+    }
+
+    function displayAbout() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("about").style.display = "block";
+      document.getElementById("services").style.display = "none";
+      document.getElementById("contact").style.display = "none";
+    }
+    function displayServices() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("services").style.display = "block";
+      document.getElementById("contact").style.display = "none";
+    }
+
+    function displayContact() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("services").style.display = "none";
+      document.getElementById("contact").style.display = "block";
+    }
+
+    // JavaScript to toggle the visibility of the sidebar
+    var toggleButton = document.getElementById("toggleButton");
+    var sidebar = document.getElementById("sidebar");
+    var main = document.getElementById("main");
+
+    toggleButton.addEventListener("click", function () {
+      if (sidebar.style.width === "0px") {
+        sidebar.style.width = "200px";
+        main.style.marginLeft = "200px";
+        toggleButton.innerHTML = "&lt;";
+      } else {
+        sidebar.style.width = "0px";
+        main.style.marginLeft = "0px";
+        toggleButton.innerHTML = "&gt;";
+      }
+    });
+  </script>
+</html>

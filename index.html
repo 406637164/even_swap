@@ -25,8 +25,12 @@
       href="https://fonts.googleapis.com/css2?family=Catamaran&family=Inter&family=Kalam:wght@400;700&family=Niramit:wght@600&family=Noto+Sans+TC&display=swap"
       rel="stylesheet"
     />
- 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://use.fontawesome.com/cd2de690d5.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Catamaran&family=Inter&family=Kalam:wght@400;700&family=Niramit:wght@600&family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
   </head>
   <body>
     
@@ -405,6 +409,25 @@
         <div class="overlay hidden"></div>
         
         <div class="main">
+          <div class="row row0">
+            <div class="labels">
+              <div class="lagend">
+                
+                <ul>
+                   
+                  <li><div class="lagend__title">國立國父紀念館</div><div class="colors" style="background: #1f77b4"> </div></li>
+                  <li><div class="lagend__title">瓶蓋工廠台北製造所</div>
+                    <div  class="colors" style="background: #ff7f0e"> </style=>
+                  </li>
+                  <li><div class="lagend__title">松山文創園區</div><div  class="colors" style="background:#2ca02c"> </div></li>
+                  <li><div class="lagend__title">文昌宮</div>
+                    <div  class="colors" style="background:  #d62728"
+                      > 
+                  </li>
+                </ul>
+              </div>
+             </div>
+          </div>
           <div class="d3Chart" id="chart"></div>
           <table class="main-table">
             <!-- <thead>
@@ -565,12 +588,10 @@
             </tbody> -->
           </table>
           <div class="main-des-area">
-            <div class="main_table__desc">
-  
-            </div>
+           
             <nav>
               <div class="main-des-area__btn ">
-                <a href="#" class=" show-modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                <a href="#" class=" show-modal"><i class="fa fa-pencil-square-o" aria-hidden="true" style="   background-color: #f1f1f1;"></i></a>
                 <div class="main-des-area__btn__txt">
                   <span>打分數</span>
                 </div>
@@ -583,23 +604,7 @@
        
      
         <div class="row">
-         <div class="labels">
-          <div class="lagend" style="padding-top: 10px;margin-top: 30px;">
-            
-            <ul>
-               
-              <li><div class="lagend__title">國立國父紀念館</div><div class="colors" style="background: #1f77b4"> </div></li>
-              <li><div class="lagend__title">瓶蓋工廠台北製造所</div>
-                <div  class="colors" style="background: #ff7f0e"> </style=>
-              </li>
-              <li><div class="lagend__title">松山文創園區</div><div  class="colors" style="background:#2ca02c"> </div></li>
-              <li><div class="lagend__title">文昌宮</div>
-                <div  class="colors" style="background:  #d62728"
-                  > 
-              </li>
-            </ul>
-          </div>
-         </div>
+       
     
        
          
@@ -607,10 +612,22 @@
           
           <div class="row" id="carView">
             
+          
+           
+          </div>
+          <div class="row" id="carView2">
+            
+          
+           
+          </div>
+      
+            
+          
+          
+          </div>
             
           
           </div>
-           
           </div>
         </div>
       </div>
@@ -625,6 +642,7 @@
   src="https://code.jquery.com/jquery-3.6.1.js"
   integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
   crossorigin="anonymous"></script>
+
   <script src="  https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/tw-city-selector@2.1.1/dist/tw-city-selector.min.js"></script>

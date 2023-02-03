@@ -2,8 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
-  font-family: "Kalam", cursive;
+  font-family: "Catamaran", sans-serif;
 }
 
 .conatiner {
@@ -19,12 +18,14 @@
   background-color: white;
 }
 .container .tab-4 .main {
-  height: 90%;
+  height: 50vh;
   width: 100%;
   display: flex;
-  padding: 20px;
-  padding-top: 60px;
+  padding: 3px;
+  /* padding-top: 60px; */
   z-index: 3;
+  justify-content: center;
+  align-items: center;
 }
 
 .container .tab-1 .main {
@@ -232,7 +233,7 @@
 .container .tab-3 .main .check_table th,
 td {
   border: 0.5px solid black;
-  padding: 20px 25px;
+  padding: 2px 2px;
   vertical-align: middle;
   box-shadow: 1px 1px 1px gray;
   text-align: center;
@@ -253,13 +254,23 @@ td {
 }
 
 .container .main .main-table {
-  width: 70%;
-  padding: 20px;
+  /* width: 70%; */
+  width: 700px;
+  /* padding: 20px; */
+  height: 320px;
+  position: relative;
+  top: 20px;
 }
 .container .main .main-des-area {
   /* width: 30%; */
+  /* display: flex; */
+  /* float: right; */
+  /* padding: 20px; */
+  /* width: 0; */
   display: flex;
-  padding: 20px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
 }
 
 .container .main .main-des-area .main_table__desc {
@@ -268,20 +279,43 @@ td {
   padding: 5px;
 }
 .deltext {
-  color: red;
+  color: black;
 }
+.deltext2 {
+  color: white;
+}
+.deleven {
+  color: white;
+  opacity: 0.4;
+  background-color: rgb(8, 8, 8);
+}
+.deleven::after {
+  content: "(EVEN)";
+  color: white;
+}
+
 .container .main .main-des-area nav {
   font-size: 2.25rem;
   /* width: 10%; */
-  padding: 5px;
+  box-shadow: 0px 0 2px 0px black;
+  padding: 15px;
+  /* width: 200px; */
+  height: 50vh;
+  border-radius: 0px; /* make the border circular by setting the radius to half of the width/height */
+  /* border: 0.3px solid rgb(174, 174, 174); */
+  background-color: #f1f1f1;
 }
 
 .container .main .main-des-area nav .main-des-area__btn {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 .container .main .main-des-area nav .main-des-area__btn a {
-  color: black;
+  color: #333;
+  background-color: #f1f1f1;
   display: block;
 }
 .container .main .main-des-area nav .main-des-area__btn:hover {
@@ -294,14 +328,15 @@ td {
   .main-des-area__btn
   .main-des-area__btn__txt {
   text-align: center;
-  font-size: 10px;
+  font-size: 1rem;
+  color: #333;
 }
 .container .main .main-table th {
   border: 0.5px solid black;
-  padding: 5px 2px;
+  /* padding: 25px 2px; */
   box-shadow: 1px 1px 1px gray;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1 rem;
   line-height: 1.2;
   vertical-align: middle;
 }
@@ -311,7 +346,7 @@ td {
 }
 .container .main .main-table td {
   border: 0.5px solid black;
-  padding: 20px 25px;
+  /* padding: 3px 10px; */
   vertical-align: middle;
   box-shadow: 1px 1px 1px gray;
   text-align: center;
@@ -326,8 +361,8 @@ td {
   vertical-align: middle;
 }
 .container .main .main-table td .desc {
-  padding-bottom: 10px;
-  font-size: 1.6rem;
+  padding-bottom: 2px;
+  font-size: 1rem;
 }
 .container .main .main-table td .txt {
   font-size: 0.85rem;
@@ -336,10 +371,13 @@ td {
 .container .row {
   display: flex;
   padding: 10px;
-  height: 100%;
+  /* height: 100%; */
   margin-bottom: auto;
   border-radius: 10px;
   border-width: 2px;
+  flex-wrap: wrap;
+  left: 0px;
+  top: 50px;
 }
 .conatiner .col {
   display: flex;
@@ -360,14 +398,20 @@ td {
 
   vertical-align: middle;
 }
+.labels {
+  position: relative;
+  left: 0;
+}
 .container .row .lagend {
-  padding: 5px;
+  position: absolute;
+  /* padding: 5px; */
   background-color: white;
-
+  font-size: 12px;
   box-shadow: 0 0 5px 1px Gray;
-  width: 220px;
+  width: 160px;
   position: relative;
   z-index: 3;
+  left: px;
 }
 .container .row .lagend ul {
   padding: 10px;
@@ -386,10 +430,12 @@ td {
   display: inline-block;
   width: 85%;
 }
-
+/* .subchart #carView {
+  width: 0;
+} */
 .container .row .lagend .colors {
   height: 5px;
-  width: 30px;
+  width: 15px;
   z-index: 4;
   display: inline-block;
   position: absolute;
@@ -400,7 +446,7 @@ td {
   width: 0;
   flex-grow: 2;
   color: black;
-  padding: 5px 10px;
+  padding: 1px 10px;
   flex-wrap: wrap;
   display: flex;
 
@@ -417,13 +463,68 @@ td {
   transform: translateY(-10px);
   font-weight: bold;
 }
+#re {
+  display: flex;
+}
+#re > .cover {
+  /* background-color: gray; */
+  opacity: 0.4;
+  background-color: rgb(8, 8, 8);
+  pointer-events: none;
+  animation-name: MoveToRight; /*動畫名稱，需與 keyframe 名稱對應*/
+  animation-duration: 0.5s; /*動畫持續時間，單位為秒*/
+  overflow: hidden;
+  /* animation-delay: 2s; 動畫延遲開始時間 */
+}
+
+.hidecard {
+  /* background-color: gray; */
+  line-height: 1.2;
+
+  color: white;
+  opacity: 0.4;
+  background-color: rgb(8, 8, 8);
+  pointer-events: none;
+  animation-name: MoveToRight; /*動畫名稱，需與 keyframe 名稱對應*/
+  animation-duration: 0.5s; /*動畫持續時間，單位為秒*/
+  overflow: hidden;
+  /* animation-delay: 2s; 動畫延遲開始時間 */
+}
+.hidecard::before {
+  content: " Dominated ";
+}
+/* @keyframes change {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+} */
+@keyframes MoveToRight {
+  0% {
+    transform: translateY(-70px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+#re > .cover .card-title {
+  padding: 3px;
+
+  color: white;
+}
+#re > .cover .card-title::after {
+  content: " Dominate ";
+}
 .container .row .subchart .card {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 330px;
+  width: 400px;
   margin: 5px;
 
   padding: 10px 20px;
@@ -472,15 +573,17 @@ td {
 .wrap {
   z-index: 3;
   width: 100%;
-  position: fixed;
-  padding: 20px 0;
+  position: absolute;
+  /* padding: 20px 0; */
+  /* height: 0; */
   top: 0;
   background-color: #726b6e;
 }
 .breacrumb {
   width: 90%;
   margin: auto;
-  display: flex;
+  /* display: flex; */
+  display: none;
 }
 .breacrumb li {
   padding: 0 20px;
@@ -576,7 +679,7 @@ p {
 }
 .overlay {
   position: absolute;
-  top: 55px;
+  top: 0;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -645,8 +748,8 @@ p {
 }
 #chart {
   position: relative;
-  top: 50px;
-  left: 50px;
+  /* top: 100px; */
+  /* left: -150px; */
 }
 
 .toolTip {
@@ -747,4 +850,74 @@ button.def {
   border: transparent;
   border-top: 3px solid black;
   color: white;
+}
+.row_tab2 > th {
+  background-color: rgb(8, 8, 8);
+  color: white;
+
+  font-size: 15px;
+  opacity: 0.2;
+}
+.row_tab2 > th::after {
+  content: "(Dominated)";
+  font-size: 15px;
+}
+.row_tab2 > .rowtd {
+  background-color: white;
+  opacity: 0.2;
+  pointer-events: none;
+}
+.row_tab2 > td {
+  background-color: white;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.row_tab > .rowtd {
+  background-color: white;
+  opacity: 0.2;
+  pointer-events: none;
+}
+.container .main .main-table .dominate {
+  width: 10px;
+  border: 0;
+  border-style: none;
+  box-shadow: none;
+  padding: 1px;
+  font-size: 1.25rem;
+  color: white;
+  border-bottom: 1px solid white;
+  background-color: red;
+}
+.even {
+  background-color: white;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.container .main .main-table .evens > td {
+  box-shadow: none;
+  padding: 3px;
+  border: 0;
+  font-size: 1.25rem;
+  color: white;
+}
+.container .main .main-table .evenstyle {
+  width: 10px;
+  border: 0;
+  border-style: none;
+  box-shadow: none;
+  padding: 1px;
+  font-size: 1.25rem;
+  color: white;
+  border-bottom: 1px solid white;
+  background-color: darkgrey;
+}
+.title {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  /* padding: 20px; */
+}
+.row0 {
+  position: absolute;
+  left: 10px;
 }
