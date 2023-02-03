@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var datas = [
+      [
+        {
+          case: "國立國父紀念館",
+          area: "拿多少錢願意去",
+          value: 0,
+          orgdata: "",
+        },
+        {
+          case: "國立國父紀念館",
+          area: "享受程度",
+          value: 0,
+          orgdata: 30,
+        },
+        {
+          case: "國立國父紀念館",
+          area: "交通時間 ",
+          value: 1,
+          orgdata: "30分鐘",
+        },
+        {
+          case: "國立國父紀念館",
+          area: "服務設施 ",
+          value: 0,
+          orgdata: "廁所",
+        },
+        {
+          case: "國立國父紀念館",
+          area: "美食 ",
+          value: 10,
+          orgdata: "餐廳",
+        },
+      ],
+      [
+        {
+          case: "瓶蓋工廠台北製造所 ",
+          area: "拿多少錢願意去",
+          value: 0,
+          orgdata: "",
+        },
+        {
+          case: "瓶蓋工廠台北製造所 ",
+          area: "享受程度",
+          value: 50,
+          orgdata: 50,
+        },
+        {
+          case: "瓶蓋工廠台北製造所 ",
+          area: "交通時間 ",
+          value: 100,
+          orgdata: "40分鐘",
+        },
+        {
+          case: "瓶蓋工廠台北製造所 ",
+          area: "服務設施 ",
+          value: 20,
+          orgdata: "廁所",
+        },
+        {
+          case: "瓶蓋工廠台北製造所 ",
+          area: "美食 ",
+          value: 10,
+          orgdata: "餐廳",
+        },
+      ],
+      [
+        {
+          case: "松山文創園區 ",
+          area: "拿多少錢願意去",
+          value: 10,
+          orgdata: "",
+        },
+        { case: "松山文創園區 ", area: "享受程度", value: 20, orgdata: 20 },
+        {
+          case: "松山文創園區 ",
+          area: "交通時間 ",
+          value: 10,
+          orgdata: "40分鐘",
+        },
+        {
+          case: "松山文創園區 ",
+          area: "服務設施 ",
+          value: 10,
+          orgdata: "廁所",
+        },
+        {
+          case: "松山文創園區 ",
+          area: "美食 ",
+          value: 10,
+          orgdata: "餐廳",
+        },
+      ],
+      [
+        { case: "文昌宮", area: "拿多少錢願意去", value: 0, orgdata: "" },
+        { case: "文昌宮", area: "享受程度", value: 6, orgdata: 80 },
+        {
+          case: "文昌宮",
+          area: "交通時間 ",
+          value: 3,
+          orgdata: "10分鐘",
+        },
+        { case: "文昌宮", area: "服務設施 ", value: 0, orgdata: "廁所" },
+        { case: "文昌宮", area: "美食 ", value: 8, orgdata: "餐廳" },
+      ],
+    ];
+    let org = JSON.parse(JSON.stringify(datas));
+    let data = org.map((subarray) => {
+      return subarray.map((item) => item.value);
+    });
+    console.log(data);
+    var cpdata = JSON.parse(JSON.stringify(data));
+    console.log(cpdata);
+    function removeSmallerArray(data) {
+      data.forEach((d, i) => {
+        var referenceArray = d;
+        data = data.filter((subArray, i) => {
+          if (
+            !subArray.every((value, index) => {
+              if (value < referenceArray[index]) {
+                return value < referenceArray[index];
+              }
+            })
+          ) {
+            return !subArray.every((value, index) => {
+              if (value < referenceArray[index]) {
+                return value < referenceArray[index];
+              }
+            });
+          }
+        });
+      });
+      return data;
+    }
+    function findMatchingValues(arr) {
+      const indices = [];
+      for (let i = 0; i < arr[0].length; i++) {
+        let match = true;
+        for (let j = 0; j < arr.length; j++) {
+          if (arr[j][i] !== arr[0][i]) {
+            match = false;
+            break;
+          }
+        }
+        if (match) {
+          if (i != 0) {
+            indices.push(i);
+          }
+        }
+      }
+      return indices;
+    }
+    //even 要移除的index
+
+    let index = findMatchingValues(data);
+    index.forEach((d, i) => {
+      if (d != 0) {
+        data.forEach((d2, i2) => {
+          d2.splice(d2.indexOf(d2[d]), 1);
+        });
+      }
+    });
+
+    console.log(index);
+    let data2 = removeSmallerArray(data);
+    console.log(data2);
+    const result = data
+      .map((item, i) =>
+        data2.findIndex((x) => x.every((v, index) => v === item[index])) === -1
+          ? i
+          : -1
+      )
+      .filter((i) => i !== -1);
+    console.log("這是dominate要移除的index");
+    console.log(result);
+    const a3 = [...index];
+    let newc = [];
+    org.forEach((cpd, k) => {
+      //  let new6 = [];
+      cpd.forEach((dpd, dpi) => {
+        a3.forEach((dpd2, dpi2) => {
+          if (dpd2 == dpi) {
+            newc.push(cpd[dpi]);
+          }
+        });
+        //     newc.push(new6);
+      });
+    });
+    //    even 過後的內容
+    console.log(newc);
+    let new7 = [];
+    result.forEach((rp, ri) => {
+      //     console.log(org[rp]);
+      new7.push(org[rp]);
+    });
+    // dominate 過後必須加的陣列內容
+    console.log(new7);
+    a3.forEach((b3, bi) => {
+      org.forEach((cpd, cpi) => {
+        cpd.splice(b3, 1);
+      });
+    });
+    new7.forEach((or, oi) => {
+      org.forEach((or2, ori) => {
+        if (or == or2) {
+          org.splice(ori, 1);
+        }
+      });
+    });
+    console.log(org);
+  </script>
+</html>

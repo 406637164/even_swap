@@ -1,0 +1,235 @@
+   console.log(datas);
+    let org = JSON.parse(JSON.stringify(datas));
+    console.log(org);
+    let data = org.map((subarray) => {
+      return subarray.map((item) => item.value);
+    });
+    console.log(data);
+
+    var cpdata = JSON.parse(JSON.stringify(data));
+    // 先找出原本data是否有even 的值,保存並刪掉 findMatchingValues
+    // 將保存even值存在陣列以便往後可以加到最後一欄
+    // 判斷even過後是否有可以被主宰的方案 使用 removeSmallerArray
+    // 再次使用findMatchingValues 並且match到的值加入剛才findMatchingValues 已在陣列當中
+    console.log(cpdata);
+    console.log(data);
+    index = findMatchingValues(data);
+    var arrr = [];
+    // 除了拿多少錢願意換其他家道暫存陣列
+    console.log(index);
+
+    function removeSmallerArray(data) {
+      data.forEach((d, i) => {
+        var referenceArray = d;
+        data = data.filter((subArray, i) => {
+          if (
+            !subArray.every((value, index) => {
+              if (value < referenceArray[index]) {
+                return value < referenceArray[index];
+              }
+            })
+          ) {
+            return !subArray.every((value, index) => {
+              if (value < referenceArray[index]) {
+                return value < referenceArray[index];
+              }
+            });
+          }
+        });
+      });
+      return data;
+    }
+    console.log(index);
+    index.forEach((d, i) => {
+      if (d != 0) {
+        data.forEach((d2, i2) => {
+          console.log(d2.indexOf(d2[d]));
+          d2.splice(d2.indexOf(d2[d]), 1);
+        });
+      }
+    });
+
+    console.log(index);
+    // remove所有even 的值 顯示data
+
+    console.log(data);
+    let data2 = removeSmallerArray(data);
+    console.log(data2);
+    console.log(data);
+    const result = data
+      .map((item, i) =>
+        data2.findIndex((x) => x.every((v, index) => v === item[index])) === -1
+          ? i
+          : -1
+      )
+      .filter((i) => i !== -1);
+    console.log("這是dominate");
+    console.log(result);
+    var arr2 = data2;
+
+    function findMatchingValues(arr) {
+      const indices = [];
+      for (let i = 0; i < arr[0].length; i++) {
+        let match = true;
+        for (let j = 0; j < arr.length; j++) {
+          if (arr[j][i] !== arr[0][i]) {
+            match = false;
+            break;
+          }
+        }
+        if (match) {
+          indices.push(i);
+        }
+      }
+      console.log(indices);
+      return indices;
+    }
+    console.log(data2);
+    let index2 = findMatchingValues(data2);
+    console.log(index2);
+    console.log(arrr);
+
+    data2.forEach((k, p) => {
+      index2.forEach((r, c) => {
+        console.log(k[r]);
+        k.splice(r, 1);
+      });
+    });
+    console.log(data);
+    console.log(cpdata);
+    let ar3 = [];
+    cpdata.forEach((cp, ci) => {
+      console.log(cp);
+      ar3.push(cp[index2]);
+    });
+    //    console.log(ar3);
+    console.log(arrr);
+
+    console.log("這是even");
+    const a3 = [...index2, ...index];
+    console.log(a3);
+    a3.forEach((d, i) => {
+      if (d != 0) {
+        data.forEach((d2, i2) => {
+          d2.splice(d2.indexOf(d2[d]), 1);
+        });
+      }
+    });
+
+    console.log(a3);
+
+    // var newd = [];
+    // var newd2 = [];
+    let newi = [];
+    let newk = [];
+    //  註解地方是單純用value來測試
+    let newd = [];
+    // cpdata.forEach((cpd, cpi) => {
+    //   result.forEach((r2, r2i) => {
+    //     // 如果 dominate index 和某個data index相同則加入某陣列
+    //     if (r2 == cpi) {
+    //       newd.push(cpd);
+    //     }
+    //   });
+
+    //   let newd2 = [];
+    //   console.log(result);
+
+    //   //    console.log(newd2);
+    //   let new4 = [];
+    //   let new5 = [];
+    //   cpd.forEach((dpd, dpi) => {
+    //     a3.forEach((dpd2, dpi2) => {
+    //       if (dpd2 == dpi) {
+    //         new4.push(cpd[dpi]);
+    //         new5.push(dpi);
+    //       }
+    //     });
+    //   });
+    //   newi.push(new4);
+    //   newk.push(new5);
+    // });
+    let newc = [];
+    let new6 = [];
+    //  這裡是將 某個even value都相同value加到某一個 array 當中
+    console.log(a3);
+    org.forEach((cpd, k) => {
+      cpd.forEach((dpd, dpi) => {
+        a3.forEach((dpd2, dpi2) => {
+          if (dpd2 == dpi) {
+            console.log(dpi);
+            console.log(cpd);
+            newc.push(cpd[dpi]);
+          }
+        });
+      });
+    });
+    console.log("even", newc);
+
+    const result2 = Object.values(
+      newc.reduce((group, { case: c, area: a, orgdata: k, value: v }) => {
+        (group[a] = group[a] || []).push({
+          case: c,
+          area: a,
+          orgdata: k,
+          value: v,
+        });
+        return group;
+      }, {})
+    );
+    // let take2 = take.map((d, i) => d[0]);
+
+    console.log(result2);
+    console.log(newk);
+    // 這是被dominate 之後的值
+    //  console.log("這是被dominate 之後的值");
+    //  console.log(newd);
+    let new7 = [];
+    result.forEach((rp, ri) => {
+      //     console.log(org[rp]);
+      new7.push(org[rp]);
+    });
+    console.log("---");
+    console.log(new7);
+    console.log(org);
+    //org.map((or,oi)=>or==)
+    // 這是被even後的值
+    // console.log("這是被even後的值");
+    console.log(newi);
+    //  console.log("dom真");
+    // console.log(newd2);
+    // 這個是畫table 及讀的資料
+    console.log(data2);
+    console.log(org);
+
+    console.log("even swap 值");
+
+    // console.log(newc);
+    console.log(result2);
+    MyChart.even.push(newc);
+    console.log("domainate真正值");
+    console.log(new7);
+    MyChart.dominant.push(new7);
+    console.log("刪除被dominate值得到的");
+    new7.forEach((or, oi) => {
+      org.forEach((or2, ori) => {
+        if (or == or2) {
+          org.splice(ori, 1);
+        }
+      });
+    });
+    console.log(org);
+    console.log(a3);
+    a3.forEach((b3, bi) => {
+      console.log(b3);
+      org.forEach((cpd, cpi) => {
+        console.log(cpd[b3]);
+        cpd.splice(b3, 1);
+        //org.splice(b3, 1);
+      });
+    });
+    console.log(a3);
+    console.log(org);
+    console.log(new7);
+
+    return org;
