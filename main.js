@@ -29,8 +29,6 @@ axios
       data,
       data3: JSON.parse(JSON.stringify(data)),
       arr: [],
-      a3: [],
-      evens: [],
       repaint: function (data) {
         // data.forEach((array) => {
         //   array.forEach((object) => {
@@ -69,11 +67,10 @@ axios
 
         console.log(data);
         // MyChart.data2 = JSON.parse(JSON.stringify(data));
-        // $("#carView>.hidecard").hide();
         RadarChart.draw("#chart", data, config);
 
         Tables.draw(MyChart.data);
-        // Tables.draw(MyChart.data);
+        Tables.draw(MyChart.data);
         // MyChart.data = JSON.parse(JSON.stringify(newdata));
 
         // MyChart.data2 = JSON.parse(JSON.stringify(data));
@@ -93,50 +90,22 @@ axios
       even2: [],
       recycle: "",
       reycle2: [],
-      dominatevalue: [],
-      evenvalue: [],
       datas: data,
       dominant: [],
       Dominatefunc: function (datas) {
-        console.error(datas);
-        console.log(MyChart.a3);
+        console.log(datas);
+        console.log();
         datas = JSON.parse(JSON.stringify(datas));
         let org = JSON.parse(JSON.stringify(datas));
-        datas.forEach((array, i) => {
-          array.forEach((object, i3) => {
-            console.log(i3);
-
-            if (MyChart.a3.includes(i3)) {
-              object.even = 1;
-              console.log(object);
-            }
+        let data = org.map((subarray) => {
+          return subarray.map((item) => {
+            // if (item.even != undefined) {
+            console.log(item);
+            return item.value;
+            // }
           });
         });
-        org.forEach((array, i) => {
-          array.forEach((object, i3) => {
-            console.log(i3);
-
-            if (MyChart.a3.includes(i3)) {
-              object.even = 1;
-              console.log(object);
-            }
-          });
-        });
-        console.log(org);
-        // let data = org.map((subarray) => {
-        //   return subarray
-        //     .map((item) => {
-
-        //       console.log(item);
-        //       if (item.even != 1) {
-        //         return item.value;
-        //       }
-
-        //       // }
-        //     })
-        //     .filter((ff, fi) => ff != null);
-        // });
-        // console.log(data);
+        console.log(data);
         var cpdata = JSON.parse(JSON.stringify(data));
         console.log(cpdata);
         function removeSmallerArray(data) {
@@ -254,18 +223,6 @@ axios
         }
         console.log(MyChart.dominant);
         console.log(a3);
-        // MyChart.a3 = a3;
-        console.log(MyChart.data);
-        datas.forEach((array, i) => {
-          array.forEach((object, i3) => {
-            console.log(i3);
-
-            if (a3.includes(i3)) {
-              object.even = 1;
-              console.error(object);
-            }
-          });
-        });
         // a3.forEach((b3, bi) => {
         //   org.forEach((cpd, cpi) => {
         //     console.log(cpd[b3]);
@@ -304,25 +261,10 @@ axios
 
           MyChart.datas.forEach((or2, ori) => {
             if (oi == ori) {
-              // MyChart.datas.splice(ori, 1);
+              MyChart.datas.splice(ori, 1);
             }
           });
         });
-        console.log(MyChart.a3);
-        let ak0 = [...$(".main-table>.row_tab")]
-          // .filter((m, i) => i > 0)
-          .map((dc, di) => {
-            return [...dc.children]
-              .filter((cc, ci) => ci > 1)
-              .map((dd, cc) => {
-                var ars = dd.children[0].innerText.split(" ");
-                var ars2 = ars[ars.length - 1];
-                console.log(ars2);
-                return ars2;
-              });
-          });
-        console.log(ak0);
-
         // if (result.length != 0) {
         // MyChart.data2 = JSON.parse(JSON.stringify(MyChart.data));
         // MyChart.data2 = MyChart.data;
@@ -331,7 +273,6 @@ axios
         // }
         // MyChart.data = MyChart.datas;MyChart.datas
         // org = MyChart.datas;
-        // MyChart.data = org;
         console.log(MyChart);
         // console.log(org);
         console.error(MyChart.datas);

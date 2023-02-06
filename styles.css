@@ -476,23 +476,6 @@ td {
   overflow: hidden;
   /* animation-delay: 2s; 動畫延遲開始時間 */
 }
-
-.hidecard {
-  /* background-color: gray; */
-  line-height: 1.2;
-
-  color: white;
-  opacity: 0.4;
-  background-color: rgb(8, 8, 8);
-  pointer-events: none;
-  animation-name: MoveToRight; /*動畫名稱，需與 keyframe 名稱對應*/
-  animation-duration: 0.5s; /*動畫持續時間，單位為秒*/
-  overflow: hidden;
-  /* animation-delay: 2s; 動畫延遲開始時間 */
-}
-.hidecard::before {
-  content: " Dominated ";
-}
 /* @keyframes change {
   from {
     transform: translateY(-10px);
@@ -865,11 +848,6 @@ button.def {
 .row_tab2 > .rowtd {
   background-color: white;
   opacity: 0.2;
-  pointer-events: none;
-}
-.row_tab2 > td {
-  background-color: white;
-  opacity: 0.1;
   pointer-events: none;
 }
 .row_tab > .rowtd {

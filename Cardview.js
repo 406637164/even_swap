@@ -4,11 +4,7 @@ var Cardview = {
   draw: function (data) {
     console.log(data);
     cardview[0].innerHTML = "";
-
-    let datas = data.map((dd, ii) => {
-      return dd.filter((dk, di) => dk.even != 1);
-    });
-    datas.forEach((array) => {
+    data.forEach((array) => {
       array.forEach((object) => {
         if (object.level === 0) {
           return;
@@ -26,8 +22,8 @@ var Cardview = {
       });
     });
     console.log();
-    datas.forEach((d, i) => {
-      if (cardview[0].children.length < datas.length) {
+    data.forEach((d, i) => {
+      if (cardview[0].children.length < data.length) {
         cardview.append(`   <div class="card r1">
         <div class="card-title">${d[0].case}</div>
         <div class="card-radar"></div>
@@ -76,22 +72,22 @@ var Cardview = {
       //     return obj.even !== 1;
       //   });
       // });
-      const ars = datas.flatMap((y2) =>
+      console.log(data);
+      const ars = data.flatMap((y2) =>
         y2.filter((k) => k.area === "拿多少錢願意去").map((k) => k.value)
       );
       console.log(ars);
       const maxars = d3.max(ars, (dk) => dk);
       var dat = 0;
-      if (datas[i][0].value == 0) {
-        dat = datas[i][0].value;
+      if (data[i][0].value == 0) {
+        dat = data[i][0].value;
       } else {
-        dat = (datas[i][0].value / maxars) * 100;
+        dat = (data[i][0].value / maxars) * 100;
       }
       console.log(dat);
       console.log();
       // $("#carView").append("<div></div>");
-
-      DragRadarChart.draw(eachRader, datas[i], config, rgb[d[0].cor], dat);
+      DragRadarChart.draw(eachRader, data[i], config, rgb[d[0].cor], dat);
     });
     // console.log(MyChart.recycle);
     $("#carView").append("<div id='re'></div>");
