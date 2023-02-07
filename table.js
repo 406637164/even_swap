@@ -99,6 +99,7 @@ var Tables = {
           largeValue = 0;
         }
         // console.log($(".row_tab")[i]);
+
         $(".row_tab")[i].innerHTML += `<td><div class="desc">
         <span>${s} ${largeValue}</span>
       </div><div class="txt">
@@ -135,7 +136,10 @@ var Tables = {
         let res = translateval(val, i, i2, type);
         return `${res}`;
       }
+      $($(".row_tab")[i].children[1].children[0]).addClass("yourClass");
+      console.log($($(".row_tab")[i].children[1].children[0]));
     });
+
     let data2 = MyChart.dominant.map((dc) => dc[0]);
     // console.log([...$(".row_tab"),[...]]);
     console.log(data2);

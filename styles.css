@@ -676,7 +676,9 @@ p {
 .noscroll {
   overflow: hidden;
 }
-
+.yourClass::after {
+  content: "元";
+}
 .my-style-selector select {
   -webkit-appearance: none;
   -moz-appearance: none;
