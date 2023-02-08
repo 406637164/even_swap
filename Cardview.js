@@ -3,30 +3,31 @@ console.log(cardview);
 var Cardview = {
   draw: function (data) {
     console.log(data);
+
     cardview[0].innerHTML = "";
 
     let datas = data.map((dd, ii) => {
       return dd.filter((dk, di) => dk.even != 1);
     });
-    datas.forEach((array) => {
-      array.forEach((object) => {
-        if (object.level === 0) {
-          return;
-        } else if (object.level === "A") {
-          object.value = 90;
-        } else if (object.level === "B") {
-          object.value = 60;
-        } else if (object.level === "C") {
-          object.value = 10;
-        } else if (object.level === "好") {
-          object.value = 90;
-        } else if (object.level === "差") {
-          object.value = 50;
-        }
-      });
-    });
+
+    // datas.forEach((object) => {
+    //   if (object.level === "A") {
+    //     object.value = 90;
+    //   } else if (object.level === "B") {
+    //     object.value = 60;
+    //   } else if (object.level === "C") {
+    //     object.value = 10;
+    //   } else if (object.level === "好") {
+    //     object.value = 90;
+    //   } else if (object.level === "差") {
+    //     object.value = 50;
+    //   }
+    //   console.log(object.level);
+    // });
+
     console.log();
     datas.forEach((d, i) => {
+      console.log(d);
       if (cardview[0].children.length < datas.length) {
         cardview.append(`   <div class="card r1">
         <div class="card-title">${d[0].case}</div>
@@ -93,6 +94,7 @@ var Cardview = {
 
       DragRadarChart.draw(eachRader, datas[i], config, rgb[d[0].cor], dat);
     });
+
     // console.log(MyChart.recycle);
     $("#carView").append("<div id='re'></div>");
     $("#re")[0].innerHTML = MyChart.recycle;

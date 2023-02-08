@@ -71,6 +71,9 @@ var RadarChart = {
       // });
     });
 
+    // MyChart.data2 = datas;
+    console.error(MyChart.dominant);
+    console.log(datas);
     if ("undefined" !== typeof options) {
       for (var i in options) {
         if ("undefined" !== typeof options[i]) {

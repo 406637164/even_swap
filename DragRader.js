@@ -789,7 +789,8 @@ var DragRadarChart = {
     // 畫點
     console.log(maxAxisValues);
     var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-
+    var tooltip3 = d3.select(id).append("div").attr("class", "toolTip3");
+    console.log(id);
     function drawnode() {
       g.selectAll(".nodes")
         .data(d)
@@ -871,6 +872,7 @@ var DragRadarChart = {
                 d.case + "<br><span>" + d.area + "<span>" + d.level + "</span>"
               );
           }
+
           console.log(tooltip);
         })
 
@@ -902,6 +904,12 @@ var DragRadarChart = {
               // this.parentNode.appendChild(this);
 
               // d3.select(this).data()[0].level=="B"
+              const minValue = MyChart.data
+                .map((dd, ii) => dd.filter((dk, di) => dk.even != 1))
+                .map((subArray) => subArray[i])
+                .reduce((prev, curr) => {
+                  return prev.value < curr.value ? prev : curr;
+                }).value;
               var dragTarget = d3.select(this);
               if (d3.select(this).data()[0].level == "B") {
                 d3.select(this).data()[0].value = 60;
@@ -914,12 +922,18 @@ var DragRadarChart = {
               if (d3.select(this).data()[0].level == "好") {
                 d3.select(this).data()[0].value = 90;
               } else if (d3.select(this).data()[0].level == "差") {
-                d3.select(this).data()[0].value = 50;
+                d3.select(this).data()[0].value = 10;
               }
               let old = dragTarget.data()[0];
               console.log(old);
               console.log(dragTarget.data()[0]);
               console.log(MyChart.data);
+              console.log(i);
+              console.log(d);
+
+              console.log(minValue);
+              console.log(d3.select(this).data());
+              console.log(MyChart.datas);
               // Cardview.draw(MyChart.data);
               // MyChart.repaint(MyChart.data);
               // MyChart.repaint();
@@ -986,7 +1000,97 @@ var DragRadarChart = {
                     d.level +
                     "</span><br><span>拿多少錢願意去<br><input type='text' class='textbox'><span>    <button class='swapbtn'>SWAP</button>"
                 );
+              // MyChart.data.forEach((array) => {
+              //   array.forEach((object) => {
+              //     if (object.level === 0) {
+              //       return;
+              //     } else if (object.level === "A") {
+              //       object.value = 90;
+              //     } else if (object.level === "B") {
+              //       object.value = 60;
+              //     } else if (object.level === "C") {
+              //       object.value = 10;
+              //     } else if (object.level === "好") {
+              //       object.value = 90;
+              //     } else if (object.level === "差") {
+              //       object.value = 50;
+              //     }
+              //   });
+              // });
+              MyChart.data2 = JSON.parse(JSON.stringify(MyChart.data));
+              MyChart.repaint(MyChart.data);
+              Cardview.draw(MyChart.data);
+              $("#htable").prevAll().remove();
+              let rows = [...$(".main-table>tr")].map((r, i) => {
+                return [...r.children].filter((ff, fi) => fi > 1);
+                // console.log();
+              });
+              console.log(rows);
+              //處理even
+              rows.forEach((r2, ri) => {
+                r2.forEach((rc, ri) => {
+                  if (MyChart.evenvalue.includes(ri)) {
+                    console.log(rc);
+                    // console.log($(rc));
+                    if (rc.tagName == "TH") {
+                      rc.classList.add("deleven");
+                    } else if (rc.tagName == "TD") {
+                      rc.classList.add("even");
+                    }
+                  }
+                });
+              });
 
+              //處理domanate
+              let rows2 = [...$(".main-table>.row_tab")];
+              // let rows2 = [...$(".main-table>tr")].filter((ff, fa) => fa > 0);
+              rows2.forEach((vv, v2) => {
+                if (MyChart.dominatevalue.includes(v2)) {
+                  console.log(vv.classList);
+                  vv.classList = "row_tab2";
+                }
+              });
+              // console.log(MyChart.dominatevalue);
+              // $("#carView>.hidecard").hide();
+              // console.log($("#carView>.hidecard"));
+
+              [...$(".card")].forEach((card, cardi) => {
+                if (MyChart.dominatevalue.includes(cardi)) {
+                  // console.log($(card)[0].innerHTML);
+                  // if (redominate.includes(cardi)) {
+                  //   MyChart.reycle2.push($(card)[0].innerHTML);
+                  // }
+
+                  console.log(card.classList.add("hidecard"));
+                  $(card).hide();
+                }
+              });
+              console.log($(".hidecard"));
+              console.log(MyChart.reycle2);
+
+              MyChart.reycle2.forEach((rec, rei) => {
+                rec = `<div class='card r1 hidecard'>${rec}</div>`;
+                // [...[...$("#carView")][0]]
+                $("#re")[0].innerHTML += rec;
+                // console.log();
+                // console.log();
+                console.log(rec);
+              });
+
+              let rectext = [...$("#re>.hidecard>.card-title")].map(
+                (k, p) => k.innerText
+              );
+              let rows3 = [...$(".main-table>tr")].filter((ff, f2) => f2 > 0);
+              console.log(rows3);
+              [...$("#carView>.r1>.card-title")].forEach((r2, ri) => {
+                console.log(r2.innerText);
+                console.log(ri);
+                if (rectext.includes(r2.innerText)) {
+                  $(r2.parentNode).hide();
+                  rows3[ri].classList = "row_tab2";
+                  // console.log(r2);
+                }
+              });
               $(".swapbtn").on("click", function (c, u) {
                 // $(".textbox")
                 // console.log(d.case);
@@ -1072,23 +1176,23 @@ var DragRadarChart = {
 
                 console.log(removeSmallerArray(values));
 
-                MyChart.data.forEach((array) => {
-                  array.forEach((object) => {
-                    if (object.level === 0) {
-                      return;
-                    } else if (object.level === "A") {
-                      object.value = 90;
-                    } else if (object.level === "B") {
-                      object.value = 60;
-                    } else if (object.level === "C") {
-                      object.value = 10;
-                    } else if (object.level === "好") {
-                      object.value = 90;
-                    } else if (object.level === "差") {
-                      object.value = 50;
-                    }
-                  });
-                });
+                // MyChart.data.forEach((array) => {
+                //   array.forEach((object) => {
+                //     if (object.level === 0) {
+                //       return;
+                //     } else if (object.level === "A") {
+                //       object.value = 90;
+                //     } else if (object.level === "B") {
+                //       object.value = 60;
+                //     } else if (object.level === "C") {
+                //       object.value = 10;
+                //     } else if (object.level === "好") {
+                //       object.value = 90;
+                //     } else if (object.level === "差") {
+                //       object.value = 50;
+                //     }
+                //   });
+                // });
 
                 MyChart.data2 = JSON.parse(JSON.stringify(MyChart.data));
                 // MyChart.data = JSON.parse(JSON.stringify(newdata2));
@@ -1220,6 +1324,18 @@ var DragRadarChart = {
                         return ars2;
                       });
                   });
+                let ak2 = [...$(".main-table>.row_tab")]
+                  // .filter((m, i) => i > 0)
+                  .map((dc, di) => {
+                    return [...dc.children]
+                      .filter((cc, ci) => ci > 1)
+                      .map((dd, cc) => {
+                        var ars = dd.children[0].innerText.split(" ");
+                        var ars2 = ars[ars.length - 1];
+                        console.log(ars2);
+                        return ars2;
+                      });
+                  });
                 console.log(ak);
                 function findMatchingValues(arr) {
                   const indices = [];
@@ -1241,14 +1357,18 @@ var DragRadarChart = {
                 }
 
                 let index = findMatchingValues(ak);
+                // index = [...ak, ...ak2];
+                console.log(ak2);
+                let index2 = findMatchingValues(ak2);
+                console.log(index2);
+                let index3 = [...index, ...index2];
+                index3 = [...new Set(index3)];
+                console.log(index3);
+                // let r3 = [...$(".main-table>tr")].map((dc, di) => {
+                //   return [...dc.children].map((dd, cc) => dd);
+                // });
 
-                console.log(index);
-
-                let r3 = [...$(".main-table>tr")].map((dc, di) => {
-                  return [...dc.children].map((dd, cc) => dd);
-                });
-
-                const a3 = [...index];
+                const a3 = [...index3];
                 console.log(a3);
                 a3.forEach((b3, bi) => {
                   MyChart.data.forEach((cpd, cpi) => {
@@ -1358,7 +1478,7 @@ var DragRadarChart = {
                 MyChart.dominatevalue = dom;
                 console.log(MyChart.dominatevalue);
 
-                MyChart.evenvalue = index;
+                MyChart.evenvalue = index3;
                 console.log(dom);
                 [...$(".card")].forEach((card, cardi) => {
                   if (MyChart.dominatevalue.includes(cardi)) {
@@ -1435,7 +1555,32 @@ var DragRadarChart = {
                   // console.log();
                   console.log(rec);
                 });
-                console.log(MyChart.reycle2);
+
+                let rectext = [...$("#re>.hidecard>.card-title")].map(
+                  (k, p) => k.innerText
+                );
+                let rows3 = [...$(".main-table>tr")].filter((ff, f2) => f2 > 0);
+                console.log(rows3);
+                [...$("#carView>.r1>.card-title")].forEach((r2, ri) => {
+                  console.log(r2.innerText);
+                  console.log(ri);
+                  if (rectext.includes(r2.innerText)) {
+                    $(r2.parentNode).hide();
+                    rows3[ri].classList = "row_tab2";
+                    // console.log(r2);
+                  }
+                });
+                let allpolygon = [
+                  ...d3.select("#chart").selectAll("polygon")[0],
+                ];
+                allpolygon.forEach((al, ai) => {
+                  if (MyChart.dominatevalue.includes(ai)) {
+                    $(al).hide();
+                  }
+                });
+                console.log();
+
+                // console.log(MyChart.reycle2);
                 // MyChart.recycle += `<div class='card r1 cover'>${
                 //   $(".r1")[ori].innerHTML
                 // }</div>`;
@@ -1609,6 +1754,7 @@ var DragRadarChart = {
           vv.classList = "row_tab2";
         }
       });
+
       // $("#carView>.hidecard").hide();
       // console.log($("#carView>.hidecard"));
       [...$(".card")].forEach((card, cardi) => {
@@ -1621,6 +1767,44 @@ var DragRadarChart = {
       // }
 
       console.log(MyChart.evenvalue);
+      console.log(dragTarget.data()[0]);
+      if (
+        dragTarget.data()[0].value < 33 &&
+        dragTarget.data()[0].level == "C"
+      ) {
+        tooltip3
+          .style("left", d3.event.x + 20 + "px")
+          .style("top", d3.event.y + "px")
+          .style("display", "inline-block")
+          .text("拖曳到此放開並EVEN SWAP!!");
+        console.log(tooltip3);
+      }
+      let rows3 = [...$(".main-table>tr")].filter((ff, f2) => f2 > 0);
+      let rectext = [...$("#re>.hidecard>.card-title")].map(
+        (k, p) => k.innerText
+      );
+      [...$("#carView>.r1>.card-title")].forEach((r2, ri) => {
+        console.log(r2.innerText);
+        console.log(ri);
+        if (rectext.includes(r2.innerText)) {
+          $(r2.parentNode).hide();
+          rows3[ri].classList = "row_tab2";
+          // console.log(r2);
+        }
+      });
+      // const minValue = MyChart.data
+      // .map((subArray) => subArray[i])
+      // .reduce((prev, curr) => {
+      //   return prev.value < curr.value ? prev : curr;
+      // }).value;
+      // var toolTip3
+      //       tooltip3
+      //       .style("left", d3.event.pageX + 20 + "px")
+      //       .style("top", d3.event.pageY - 40 + "px")
+      //       .style("display", "inline-block")
+      //       .html(
+      //         d.case + "<br><span>" + d.area + "<span>" + d.value + "</span>"
+      //       );
       // let ndata = d3.select(dragTarget[0][0].parentNode).selectAll("circle")[0];
       // ndata = [...ndata].map((d) => d.__data__);
       // // console.log();
