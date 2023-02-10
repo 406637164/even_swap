@@ -1394,27 +1394,45 @@ var DragRadarChart = {
                   return subarray.map((item) => item.value);
                 });
                 console.log(values2);
-                function removeSmallerArray2(a) {
-                  let arr = [];
-                  for (let i = 0; i < a.length; i++) {
-                    for (let j = 0; j < a.length; j++) {
-                      if (
-                        i !== j &&
-                        a[i].every((x) => a[j].some((y) => x < y))
-                      ) {
-                        // a.splice(i, 1);
-                        arr.push(i);
-                      }
-                    }
-                  }
+                // function removeSmallerArray2(a) {
+                //   let arr = [];
+                //   for (let i = 0; i < a.length; i++) {
+                //     for (let j = 0; j < a.length; j++) {
+                //       if (
+                //         i !== j &&
+                //         a[i].every((x) => a[j].some((y) => x < y))
+                //       ) {
+                //         // a.splice(i, 1);
+                //         arr.push(i);
+                //       }
+                //     }
+                //   }
 
-                  return [...new Set(arr)];
-                }
+                //   return [...new Set(arr)];
+                // }
                 // even 的
                 console.log(index);
 
                 //dominate 的
-                let dom = removeSmallerArray2(values2);
+                function removeSmallerArray3(da) {
+                  const indices = [];
+                  for (let i = 0; i < da.length; i++) {
+                    let isSmaller = true;
+                    for (let j = 0; j < da[i].length; j++) {
+                      if (da[i][j] >= Math.max(...da.map((a) => a[j]))) {
+                        isSmaller = false;
+                        break;
+                      }
+                    }
+                    if (isSmaller) {
+                      indices.push(i);
+                    }
+                  }
+
+                  return indices;
+                }
+                console.log(removeSmallerArray3(values2));
+                let dom = removeSmallerArray3(values2);
 
                 const values3 = datas.map((subarray) => {
                   return subarray
@@ -1425,50 +1443,37 @@ var DragRadarChart = {
                     })
                     .filter((ff, fi) => ff != undefined);
                 });
-                function biggerllerArray2(a) {
-                  let arr = [];
-                  for (let i = 0; i < a.length; i++) {
-                    for (let j = 0; j < a.length; j++) {
-                      if (
-                        i !== j &&
-                        a[i].every((x) => a[j].some((y) => x > y))
-                      ) {
-                        // a.splice(i, 1);
-                        arr.push(i);
-                      }
-                    }
-                  }
 
-                  return [...new Set(arr)];
-                }
-                function smallerArray3(a) {
-                  let arr = [];
-                  for (let i = 0; i < a.length; i++) {
-                    for (let j = 0; j < a.length; j++) {
-                      if (
-                        i !== j &&
-                        a[i].every((x) => a[j].some((y) => x < y))
-                      ) {
-                        // a.splice(i, 1);
-                        arr.push(i);
-                      }
-                    }
-                  }
+                // function smallerArray3(a) {
+                //   let arr = [];
+                //   for (let i = 0; i < a.length; i++) {
+                //     for (let j = 0; j < a.length; j++) {
+                //       if (
+                //         i !== j &&
+                //         a[i].every((x) => a[j].some((y) => x < y))
+                //       ) {
+                //         // a.splice(i, 1);
+                //         arr.push(i);
+                //       }
+                //     }
+                //   }
 
-                  return [...new Set(arr)];
-                }
+                //   return [...new Set(arr)];
+                // }
                 // let doms = biggerllerArray2(values2);
-                let doms = smallerArray3(values3);
+                // let doms = smallerArray3(values3);
                 // console.log(smallerArray3(values3));
-                console.log(doms);
+                // console.log(doms);
                 console.log(dom);
                 // dom = doms;
                 // dom = dom.filter(function (value) {
                 //   return !doms.includes(value);
                 // });
-                dom = dom.filter(function (value) {
-                  return doms.includes(value);
-                });
+
+                // dom = dom.filter(function (value) {
+                //   return doms.includes(value);
+                // });
+
                 console.log(values3);
                 let redominate = MyChart.dominatevalue;
 
@@ -1567,6 +1572,7 @@ var DragRadarChart = {
                   if (rectext.includes(r2.innerText)) {
                     $(r2.parentNode).hide();
                     rows3[ri].classList = "row_tab2";
+                    MyChart.dominatevalue.push(ri);
                     // console.log(r2);
                   }
                 });
