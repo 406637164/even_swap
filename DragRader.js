@@ -1065,6 +1065,7 @@ var DragRadarChart = {
                   $(card).hide();
                 }
               });
+
               console.log($(".hidecard"));
               console.log(MyChart.reycle2);
 
@@ -1089,6 +1090,12 @@ var DragRadarChart = {
                   $(r2.parentNode).hide();
                   rows3[ri].classList = "row_tab2";
                   // console.log(r2);
+                }
+              });
+              let allpolygon = [...d3.select("#chart").selectAll("polygon")[0]];
+              allpolygon.forEach((al, ai) => {
+                if (MyChart.dominatevalue.includes(ai)) {
+                  $(al).hide();
                 }
               });
               $(".swapbtn").on("click", function (c, u) {
@@ -1493,6 +1500,29 @@ var DragRadarChart = {
                     }
                   }
                 });
+                console.log(MyChart.data);
+                console.log(MyChart.dominatevalue);
+                MyChart.data.forEach((m0, mi) => {
+                  if (!MyChart.dominatevalue.includes(mi)) {
+                    console.log(m0);
+                    m0.forEach((ma, md) => {
+                      // console.log(ma);
+                      if (ma.even != 1) {
+                        // ma = MyChart.data3[mi][md];
+                        // console.log
+                        // console.log(ma);
+                        // console.log(MyChart.data3[mi][md]);
+                        // MyChart.data[mi][md] = MyChart.data3[mi][md];
+                        // MyChart.data[mi][md] = MyChart.data3[mi][md];
+                        // MyChart.data2[mi][md] = MyChart.data3[mi][md];
+                        // MyChart.data2[mi][md] = MyChart.data3[mi][md];
+                      }
+                    });
+                    // console.log(MyChart.data3[mi]);
+                  }
+                });
+                console.log(MyChart.data);
+                // MyChart.data2 = JSON.parse(JSON.stringify(MyChart.data));
                 MyChart.repaint(MyChart.data);
 
                 $("#htable").prevAll().remove();
@@ -1572,13 +1602,17 @@ var DragRadarChart = {
                   if (rectext.includes(r2.innerText)) {
                     $(r2.parentNode).hide();
                     rows3[ri].classList = "row_tab2";
-                    MyChart.dominatevalue.push(ri);
+                    if (!MyChart.dominatevalue.includes(ri)) {
+                      MyChart.dominatevalue.push(ri);
+                    }
+
                     // console.log(r2);
                   }
                 });
                 let allpolygon = [
                   ...d3.select("#chart").selectAll("polygon")[0],
                 ];
+                console.log(MyChart.dominatevalue);
                 allpolygon.forEach((al, ai) => {
                   if (MyChart.dominatevalue.includes(ai)) {
                     $(al).hide();
@@ -1796,6 +1830,13 @@ var DragRadarChart = {
           $(r2.parentNode).hide();
           rows3[ri].classList = "row_tab2";
           // console.log(r2);
+        }
+      });
+      console.log(MyChart.dominatevalue);
+      let allpolygon = [...d3.select("#chart").selectAll("polygon")[0]];
+      allpolygon.forEach((al, ai) => {
+        if (MyChart.dominatevalue.includes(ai)) {
+          $(al).hide();
         }
       });
       // const minValue = MyChart.data
