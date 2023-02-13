@@ -19,6 +19,57 @@ axios
         object.nums = i;
       });
     });
+    var arr = [0, 2, 2, 2, 2];
+
+    function translateval(datas, i2) {
+      const levelMap = {
+        0: Math.floor(datas),
+        1: datas > 50 ? "好" : "差",
+        2: datas < 33 ? "C" : datas <= 66 ? "B" : "A",
+      };
+      console.log(levelMap[i2]);
+      const level = levelMap[i2];
+
+      return level;
+    }
+    d.data.forEach((d, i) => {
+      d.forEach((d2, i2) => {
+        console.log(arr[i2]);
+        // console.log(d2);
+        d2.level = translateval(d2.value, arr[i2]);
+        if (d2.level === 0) {
+          return;
+        } else if (d2.level === "A") {
+          d2.value = 90;
+        } else if (d2.level === "B") {
+          d2.value = 60;
+        } else if (d2.level === "C") {
+          d2.value = 10;
+        } else if (d2.level === "好") {
+          d2.value = 90;
+        } else if (d2.level === "差") {
+          d2.value = 50;
+        }
+      });
+    });
+    console.log(d.data);
+    // MyChart.data.forEach((array) => {
+    //   array.forEach((object) => {
+    //     if (object.level === 0) {
+    //       return;
+    //     } else if (object.level === "A") {
+    //       object.value = 90;
+    //     } else if (object.level === "B") {
+    //       object.value = 60;
+    //     } else if (object.level === "C") {
+    //       object.value = 10;
+    //     } else if (object.level === "好") {
+    //       object.value = 90;
+    //     } else if (object.level === "差") {
+    //       object.value = 50;
+    //     }
+    //   });
+    // });
     return d.data;
   })
   .then(function (data) {
@@ -29,48 +80,34 @@ axios
       data,
       data3: JSON.parse(JSON.stringify(data)),
       arr: [],
+      a3: [],
+      evens: [],
       repaint: function (data) {
-        // data.forEach((array) => {
-        //   array.forEach((object) => {
-        //     if (object.level === 0) {
-        //       return;
-        //     } else if (object.level === "A") {
-        //       object.value = 90;
-        //     } else if (object.level === "B") {
-        //       object.value = 60;
-        //     } else if (object.level === "C") {
-        //       object.value = 10;
-        //     } else if (object.level === "好") {
-        //       object.value = 90;
-        //     } else if (object.level === "差") {
-        //       object.value = 50;
-        //     }
-        //   });
-        // });
-        // data.forEach((array) => {
-        //   array.forEach((object) => {
-        //     if (object.level === 0) {
-        //       return;
-        //     } else if (object.level === "A") {
-        //       object.value = 90;
-        //     } else if (object.level === "B") {
-        //       object.value = 60;
-        //     } else if (object.level === "C") {
-        //       object.value = 10;
-        //     } else if (object.level === "好") {
-        //       object.value = 90;
-        //     } else if (object.level === "差") {
-        //       object.value = 50;
-        //     }
-        //   });
-        // });
-
         console.log(data);
         // MyChart.data2 = JSON.parse(JSON.stringify(data));
-        RadarChart.draw("#chart", data, config);
 
+        // $("#carView>.hidecard").hide();
         Tables.draw(MyChart.data);
-        Tables.draw(MyChart.data);
+        // MyChart.data.forEach((array) => {
+        //   array.forEach((object) => {
+        //     if (object.level === 0) {
+        //       return;
+        //     } else if (object.level === "A") {
+        //       object.value = 90;
+        //     } else if (object.level === "B") {
+        //       object.value = 60;
+        //     } else if (object.level === "C") {
+        //       object.value = 10;
+        //     } else if (object.level === "好") {
+        //       object.value = 90;
+        //     } else if (object.level === "差") {
+        //       object.value = 50;
+        //     }
+        //   });
+        // });
+        RadarChart.draw("#chart", MyChart.data, config);
+
+        // Tables.draw(MyChart.data);
         // MyChart.data = JSON.parse(JSON.stringify(newdata));
 
         // MyChart.data2 = JSON.parse(JSON.stringify(data));
@@ -90,193 +127,46 @@ axios
       even2: [],
       recycle: "",
       reycle2: [],
+      dominatevalue: [],
+      evenvalue: [],
       datas: data,
       dominant: [],
       Dominatefunc: function (datas) {
-        console.log(datas);
-        console.log();
-        datas = JSON.parse(JSON.stringify(datas));
-        let org = JSON.parse(JSON.stringify(datas));
-        let data = org.map((subarray) => {
-          return subarray.map((item) => {
-            // if (item.even != undefined) {
-            console.log(item);
-            return item.value;
-            // }
-          });
-        });
-        console.log(data);
-        var cpdata = JSON.parse(JSON.stringify(data));
-        console.log(cpdata);
-        function removeSmallerArray(data) {
-          data.forEach((d, i) => {
-            var referenceArray = d;
-            data = data.filter((subArray, i) => {
-              if (
-                !subArray.every((value, index) => {
-                  if (value < referenceArray[index]) {
-                    return value < referenceArray[index];
-                  }
-                })
-              ) {
-                return !subArray.every((value, index) => {
-                  if (value < referenceArray[index]) {
-                    return value < referenceArray[index];
-                  }
-                });
-              }
-            });
-          });
-          return data;
-        }
-        function findMatchingValues(arr) {
-          const indices = [];
-          for (let i = 0; i < arr[0].length; i++) {
-            let match = true;
-            for (let j = 0; j < arr.length; j++) {
-              if (arr[j][i] !== arr[0][i]) {
-                match = false;
-                break;
-              }
-            }
-            if (match) {
-              if (i != 0) {
-                indices.push(i);
-              }
-            }
-          }
-          return indices;
-        }
-        //even 要移除的index
-
-        let index = findMatchingValues(data);
-        console.log(index);
-        index.forEach((d, i) => {
-          if (d != 0) {
-            data.forEach((d2, i2) => {
-              d2.splice(d2.indexOf(d2[d]), 1);
-            });
-          }
-        });
-
-        console.log(index);
-        let data2 = removeSmallerArray(data);
-        console.log(data2);
-
-        const result = data
-          .map((item, i) =>
-            data2.findIndex((x) => x.every((v, index) => v === item[index])) ===
-            -1
-              ? i
-              : -1
-          )
-          .filter((i) => i !== -1);
-        console.log("這是dominate要移除的index");
-
-        // if (index.length == 0) {
-        // console.log(index);
-        // index = findMatchingValues(data2);
-        console.log(index);
-        // }
-
-        // console.log(result);
-        const a3 = [...index];
-        let newc = [];
-        console.log(newc);
-
-        org.forEach((cpd, k) => {
-          //  let new6 = [];
-          cpd.forEach((dpd, dpi) => {
-            a3.forEach((dpd2, dpi2) => {
-              if (dpd2 == dpi) {
-                newc.push(cpd[dpi]);
-              }
-            });
-            //     newc.push(new6);
-          });
-        });
-        // if (newc.length != 0) {
-        //   MyChart.data2 = MyChart.data;
-        // }
-        // console.error(newc);
-        //    even 過後的內容
-        console.log(newc);
-        // if (newc.length != 0) {
-        // MyChart.even2.push(newc);
-        // MyChart.even.push(newc);
-        // }
-        console.log(MyChart.even);
-        console.log(MyChart.even);
-        let new7 = [];
-        console.error(result);
-
-        result.forEach((rp, ri) => {
-          //     console.log(org[rp]);
-
-          new7.push(org[rp]);
-        });
-        // dominate 過後必須加的陣列內容
-        console.log(new7);
-
-        if (new7.length != 0) {
-          MyChart.dominant.push(new7);
-        }
-        console.log(MyChart.dominant);
-        console.log(a3);
-        // a3.forEach((b3, bi) => {
-        //   org.forEach((cpd, cpi) => {
-        //     console.log(cpd[b3]);
-        //     // cpd.splice(b3, 1);
-        //   });
-        // });
-
-        // a3.forEach((b3, bi) => {
-        //   org.forEach((cpd, cpi) => {
-        //     console.log(cpd[b3]);
-        //     cpd.splice(b3, 1);
-        //   });
-        // });
-        // console.log(new7);
-        new7.forEach((or, oi) => {
-          org.forEach((or2, ori) => {
-            if (or == or2) {
-              // $("#carView").append($(".r1")[ori]);
-
-              MyChart.recycle += `<div class='card r1 cover'>${
-                $(".r1")[ori].innerHTML
-              }</div>`;
-
-              // console.log($("#carView"));
-              // $("#carView2")[0].innerHTML += `<div class='card r1'>${$(".r1")[ori].innerHTML}</div>`;
-              // $("#carView2>.card")[0].innerHTML += $(".r1")[ori].innerHTML;
-              // $("#carView2").append($("#carView2>.card"));
-              // $("#carView")[0].innerHTML += $("#carView2>.card")[0].innerHTML;
-              // console.log($("#carView")[0].innerHTML);
-              console.log($(".r1")[ori]);
-              console.log(org[ori]);
-              console.log(ori);
-              org.splice(ori, 1);
-            }
-          });
-
-          MyChart.datas.forEach((or2, ori) => {
-            if (oi == ori) {
-              MyChart.datas.splice(ori, 1);
+        datas.forEach((array) => {
+          array.forEach((object) => {
+            if (object.level === 0) {
+              return;
+            } else if (object.level === "A") {
+              object.value = 90;
+            } else if (object.level === "B") {
+              object.value = 60;
+            } else if (object.level === "C") {
+              object.value = 10;
+            } else if (object.level === "好") {
+              object.value = 90;
+            } else if (object.level === "差") {
+              object.value = 50;
             }
           });
         });
-        // if (result.length != 0) {
-        // MyChart.data2 = JSON.parse(JSON.stringify(MyChart.data));
-        // MyChart.data2 = MyChart.data;
-        // MyChart.data = JSON.parse(JSON.stringify(MyChart.datas));
-        // console.log(MyChart);
-        // }
-        // MyChart.data = MyChart.datas;MyChart.datas
-        // org = MyChart.datas;
-        console.log(MyChart);
-        // console.log(org);
-        console.error(MyChart.datas);
-        return org;
+        MyChart.data2.forEach((array) => {
+          array.forEach((object) => {
+            if (object.level === 0) {
+              return;
+            } else if (object.level === "A") {
+              object.value = 90;
+            } else if (object.level === "B") {
+              object.value = 60;
+            } else if (object.level === "C") {
+              object.value = 10;
+            } else if (object.level === "好") {
+              object.value = 90;
+            } else if (object.level === "差") {
+              object.value = 50;
+            }
+          });
+        });
+        return datas;
       },
     };
     // let orgs = JSON.parse(JSON.stringify(data));
@@ -284,15 +174,17 @@ axios
 
     // }
 
-    let newdata = MyChart.Dominatefunc(data);
-    let newdata2 = MyChart.Dominatefunc(newdata);
+    // let newdata = MyChart.Dominatefunc(data);
+    // let newdata2 = MyChart.Dominatefunc(newdata);
     // let newdata2 = ddd(newdata);
 
-    MyChart.data = JSON.parse(JSON.stringify(newdata2));
-    MyChart.data2 = JSON.parse(JSON.stringify(newdata2));
-    Cardview.draw(MyChart.data);
-    MyChart.repaint(MyChart.data);
+    // MyChart.data = JSON.parse(JSON.stringify(newdata2));
+    // MyChart.data2 = JSON.parse(JSON.stringify(data));
+    // MyChart.data2 = JSON.parse(JSON.stringify(MyChart.data));
     // MyChart.repaint(MyChart.data);
+    Cardview.draw(MyChart.data);
+
+    MyChart.repaint(MyChart.data);
     // $("#carView").append("<div></div>");
     // MyChart.repaint();
   });

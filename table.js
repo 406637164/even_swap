@@ -9,7 +9,20 @@ var Tables = {
 
     // MyChart.data = JSON.parse(JSON.stringify(newdata));
     // data = MyChart.data;
-
+    var cfgs = {
+      colors: [
+        "#1f77b4",
+        "#ff7f0e",
+        "#2ca02c",
+        "#d62728",
+        "#9467bd",
+        "#8c564b",
+        "#e377c2",
+        "#7f7f7f",
+        "#bcbd22",
+        "#17becf",
+      ],
+    };
     console.log(data);
     console.log(MyChart);
     let main_table = $(".main-table");
@@ -28,12 +41,18 @@ var Tables = {
     const head = main_table.append("<tr  id='htable'><th></th></tr>");
     data[0].forEach((d, i) => {
       //   console.log(d.area);
+      console.log(d);
+
       $("#htable").append(`<th>${d.area}</th>`);
     });
     // each case title
+
     data.forEach((d, i) => {
+      // console.log(d[0].cor);
       const trow = main_table.append(
-        `<tr class='row_tab'><th>${d[0].case}</th></tr>`
+        `<tr class='row_tab'><th> <div class="colors" style="background: ${
+          cfgs.colors[d[0].cor]
+        }"> </div> ${d[0].case}</th></tr>`
       );
     });
     // if (MyChart.dominant.length != 0) {
@@ -99,7 +118,6 @@ var Tables = {
           largeValue = 0;
         }
         // console.log($(".row_tab")[i]);
-
         $(".row_tab")[i].innerHTML += `<td><div class="desc">
         <span>${s} ${largeValue}</span>
       </div><div class="txt">
@@ -137,9 +155,8 @@ var Tables = {
         return `${res}`;
       }
       $($(".row_tab")[i].children[1].children[0]).addClass("yourClass");
-      console.log($($(".row_tab")[i].children[1].children[0]));
+      // $($(".row_tab2")[i].children[1].children[0]).addClass("yourClass");
     });
-
     let data2 = MyChart.dominant.map((dc) => dc[0]);
     // console.log([...$(".row_tab"),[...]]);
     console.log(data2);

@@ -61,14 +61,19 @@ var RadarChart = {
     // console.log(cfg.color(2));
     // console.log(cfg.color(3));
     // console.log(cfg.color(4));
-    d.forEach(function (array) {
-      array = array.filter(function (obj) {
-        console.log(obj.even == 1);
-        console.log(obj.even);
-        return obj.even != 1;
-      });
+
+    let datas = d.map((dd, ii) => {
+      return dd.filter((dk, di) => dk.even != 1);
+
+      // dd.filter(function (obj) {
+      //   console.log(obj.even);
+      //   return obj.even != 1;
+      // });
     });
-    console.log(d);
+
+    // MyChart.data2 = datas;
+    console.error(MyChart.dominant);
+    console.log(datas);
     if ("undefined" !== typeof options) {
       for (var i in options) {
         if ("undefined" !== typeof options[i]) {
@@ -79,7 +84,7 @@ var RadarChart = {
 
     cfg.maxValue = 100;
 
-    var allAxis = d[0].map(function (i, j) {
+    var allAxis = datas[0].map(function (i, j) {
       return i.area;
     });
     var total = allAxis.length;
@@ -157,11 +162,11 @@ var RadarChart = {
         );
       });
     var xScale = d3.scale.linear().domain([0, width]).range([0, width]);
-    var d2 = d;
+    var d2 = datas;
 
     var ar = [];
-    console.log(d);
-    d.forEach((qd, a) => {
+    console.log(datas);
+    datas.forEach((qd, a) => {
       ar.push(d3.max(qd, (q) => q.value));
     });
 
@@ -204,7 +209,7 @@ var RadarChart = {
     // rectvalue.map((d,i)=>d.)
 
     var datvalue2 = [];
-    d.forEach(function (y, x) {
+    datas.forEach(function (y, x) {
       dataValues = [];
 
       var ars = [];
@@ -311,10 +316,10 @@ var RadarChart = {
           .attr("class", "radar-chart-serie" + series)
           .style("stroke-width", "4px")
           .style("stroke", function (j, i) {
-            console.log(cfg.color(d[series][0].cor));
+            console.log(cfg.color(datas[series][0].cor));
             // return cfg.color(series);
-            console.log(d[series]);
-            console.log(d[series][0].cor);
+            console.log(datas[series]);
+            console.log(datas[series][0].cor);
             // return cfg.color(d[series][0].cor);
             return cfg.colors[d[series][0].cor];
           })
@@ -338,7 +343,7 @@ var RadarChart = {
             // console.log(cfg.color(d[series][0].cor));
             // return cfg.color(series);
             // return cfg.color(d[series][0].cor);
-            return cfg.colors[d[series][0].cor];
+            return cfg.colors[datas[series][0].cor];
           })
           .style("fill-opacity", cfg.opacityArea)
           .on("mouseover", function (d) {
@@ -367,7 +372,7 @@ var RadarChart = {
 
     var tooltip = d3.select("body").append("div").attr("class", "toolTip");
     reCalculatePoints();
-    RadarBar.draw(datvalue2, "#main_rader", cfg, yScale, xScale, d, total);
+    RadarBar.draw(datvalue2, "#main_rader", cfg, yScale, xScale, datas, total);
     function reCalculatePoints() {
       d.forEach(function (y, x) {
         var ars = [];
